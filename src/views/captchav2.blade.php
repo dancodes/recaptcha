@@ -11,13 +11,19 @@ if ( ! function_exists('renderDataAttributes')) {
     }
 }
 ?>
+
+@include('recaptcha::loadCaptcha')
+
 @if(!empty($options))
     <script type="text/javascript">
         var RecaptchaOptions = <?=json_encode($options) ?>;
     </script>
 @endif
-<script src='https://www.google.com/recaptcha/api.js?render=onload{{ (isset($lang) ? '&hl='.$lang : '') }}'></script>
+
+
+
 <div class="g-recaptcha" data-sitekey="{{ $public_key }}" <?=renderDataAttributes($dataParams)?>></div>
+
 <noscript>
     <div style="width: 302px; height: 352px;">
         <div style="width: 302px; height: 352px; position: relative;">
